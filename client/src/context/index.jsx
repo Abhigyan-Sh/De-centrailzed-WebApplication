@@ -16,11 +16,11 @@ export const StateContextProvider = ({ children }) => {
   const publishCampaign = async (form) => {
     try {
       const data = await createCampaign([
-        address, // owner
-        form.title, // title
-        form.description, // description
+        address, 
+        form.title, 
+        form.description, 
         form.target,
-        new Date(form.deadline).getTime(), // deadline,
+        new Date(form.deadline).getTime(), 
         form.image
       ])
 

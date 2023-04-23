@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Dna } from 'react-loader-spinner'
 
 import FundCard from './FundCard';
-import { loader } from '../assets';
 
 const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
   const navigate = useNavigate();
@@ -17,7 +17,14 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
 
       <div className="flex flex-wrap mt-[20px] gap-[26px]">
         {isLoading && (
-          <img src={loader} alt="loader" className="w-[100px] h-[100px] object-contain" />
+          <Dna
+            visible={true}
+            height="480"
+            width="380"
+            ariaLabel="dna-loading"
+            wrapperStyle={{margin: "auto"}}
+            wrapperClass="dna-wrapper"
+          />
         )}
 
         {!isLoading && campaigns.length === 0 && (
