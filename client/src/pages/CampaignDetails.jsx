@@ -45,15 +45,15 @@ const CampaignDetails = () => {
         <div className="flex-1 flex-col">
           <img src={state.image} alt="campaign" className="w-full h-[410px] object-cover rounded-xl"/>
           <div className="relative w-full h-[5px] bg-[#3a3a43] mt-2">
-            <div className="absolute h-full bg-[#4acd8d]" style={{ width: `${calculateBarPercentage(state.target, state.amountCollected)}%`, maxWidth: '100%'}}>
+            <div className="absolute h-full bg-[#4acd8d]" style={{ width: `${calculateBarPercentage(state.target, calculateContributions(state.amountCollected))}%`, maxWidth: '100%'}}>
             </div>
           </div>
         </div>
       </div>
 
       <div className="flex w-full flex-wrap justify-around mt-5 gap-[30px]">
-        <CountBox title="Days Left" value={remainingDays} />
-        <CountBox title={`Raised of ${state.target}`} value={state.amountCollected} />
+        <CountBox title="Days Left" value={remainingDays < 1 ? 'ended' :remainingDays} />
+        <CountBox title={`Raised of ${state.target}`} value={calculateContributions(state.amountCollected)} />
         <CountBox title="Total Backers" value={donators.length} />
       </div>
 
@@ -134,3 +134,5 @@ const CampaignDetails = () => {
 }
 
 export default CampaignDetails
+
+const calculateContributions = (state) => state*(97/100)
